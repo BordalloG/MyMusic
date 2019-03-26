@@ -1,0 +1,82 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>MyMusic.Application.WebAPI</name>
+    </assembly>
+    <members>
+        <member name="M:MyMusic.Application.WebAPI.Controllers.MusicController.GetAll">
+            <summary>
+            Retrieves a List of Matchs
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:MyMusic.Application.WebAPI.Controllers.MusicController.InsertMusicAsync(MyMusic.Application.InOut.Music.MusicRequest)">
+            <summary>
+            Inserts a new Match
+            </summary>
+            <param name="musicRequest"></param>
+            <returns></returns>
+        </member>
+        <member name="M:MyMusic.Application.WebAPI.Controllers.MusicController.DeleteMatchAsync(System.Int32)">
+            <summary>
+            Remove a Match
+            </summary>
+            <param name="musicId"></param>
+            <returns></returns>
+        </member>
+        <member name="T:MyMusic.Application.WebAPI.Middleware.ErrorHandlerMiddleware">
+            <summary>
+            Middleware para interceptar exceções
+            </summary>
+        </member>
+        <member name="M:MyMusic.Application.WebAPI.Middleware.ErrorHandlerMiddleware.InvokeAsync(Microsoft.AspNetCore.Http.HttpContext,System.Func{System.Threading.Tasks.Task})">
+            <summary>
+            Handler para manipular exceções não esperadas
+            </summary>
+            <param name="context"></param>
+            <param name="next"></param>
+            <returns></returns>
+        </member>
+        <member name="T:MyMusic.Application.WebAPI.Middleware.ErrorObject">
+            <summary>
+            Objeto de padrão de responses com erro
+            </summary>
+        </member>
+        <member name="P:MyMusic.Application.WebAPI.Middleware.ErrorObject.Code">
+            <summary>
+            Código da response
+            </summary>
+        </member>
+        <member name="P:MyMusic.Application.WebAPI.Middleware.ErrorObject.Message">
+            <summary>
+            Message da response
+            </summary>
+        </member>
+        <member name="P:MyMusic.Application.WebAPI.Middleware.ErrorObject.Target">
+            <summary>
+            Target da response
+            </summary>
+        </member>
+        <member name="T:MyMusic.Application.WebAPI.Middleware.Client.API.Middleware.Models.ExceptionResponse">
+            <summary>
+            Model para padronizar exceções
+            </summary>
+        </member>
+        <member name="M:MyMusic.Application.WebAPI.Middleware.Client.API.Middleware.Models.ExceptionResponse.#ctor(System.Exception)">
+            <summary>
+            Construtor recebendo exception para tratar
+            </summary>
+            <param name="exception"></param>
+        </member>
+        <member name="P:MyMusic.Application.WebAPI.Middleware.Client.API.Middleware.Models.ExceptionResponse.Error">
+            <summary>
+            Response error
+            </summary>
+        </member>
+        <member name="P:MyMusic.Application.WebAPI.Middleware.Client.API.Middleware.Models.ExceptionResponse.InnerError">
+            <summary>
+            Response inner error
+            </summary>
+        </member>
+    </members>
+</doc>
