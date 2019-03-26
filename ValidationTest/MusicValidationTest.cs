@@ -24,7 +24,6 @@ namespace ValidationTest
             Assert.False(music.IsValid);
             Assert.NotEmpty(music.ValidationResult.Errors);
         }
-
         public static IEnumerable<object[]> ReturnValidMusic()
         {
             yield return new object[] { "Metallica", "Nothing Else Matters", new TimeSpan(0, 6, 33) };

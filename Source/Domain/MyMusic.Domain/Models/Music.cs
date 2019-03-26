@@ -11,12 +11,22 @@ namespace MyMusic.Domain.Models
             Author = author;
             Title = title;
             Duration = duration;
+            DurationTicks = duration.Ticks;
+        }
+
+        public Music(string author, string title, long durationTicks)
+        {
+            Author = author;
+            Title = title;
+            Duration = TimeSpan.FromTicks(durationTicks);
+            DurationTicks = durationTicks;
         }
 
         public string Author { get; set; }
         public string Title { get; set; }
         public TimeSpan Duration { get; set; }
-    
+        public long DurationTicks { get; set; }
+
         public ValidationResult ValidationResult { get; private set; }
         public bool IsValid
         {
