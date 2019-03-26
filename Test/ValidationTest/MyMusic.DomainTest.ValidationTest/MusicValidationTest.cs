@@ -1,9 +1,10 @@
-using MyMusic.Domain.Models;
+﻿using MyMusic.Domain.Models;
 using System;
 using System.Collections.Generic;
+using System.Text;
 using Xunit;
 
-namespace ValidationTest
+namespace MyMusic.DomainTest.ValidationTest
 {
     public class MusicValidationTest
     {
