@@ -1,0 +1,14 @@
+DROP DATABASE MyMusic
+GO
+CREATE DATABASE MyMusic
+GO
+
+USE MyMusic
+GO
+
+CREATE TABLE Music(
+Id INT IDENTITY,
+Title VARCHAR(100),
+Author VARCHAR(100),
+DurationTicks BIGINT
+)
