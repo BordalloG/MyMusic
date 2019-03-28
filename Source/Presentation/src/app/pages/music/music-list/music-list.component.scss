@@ -12,4 +12,18 @@ th.mat-sort-header-sorted {
 
 .filter > * {
   width: 100%;
+  background-color: #424242;
+}
+#filterInput {
+  margin: 0 2% !important;
+}
+.sortOrderButton
+{
+  width: 14%;
+  padding: 1%;
+  border-radius: 2px;
+  background-color:  #373737 !important;
+}
+.sortOrderIcon{
+  font-size: 2em;
 }

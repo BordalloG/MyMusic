@@ -13,7 +13,19 @@ export class MusicService {
 
   constructor(private http: HttpClient) { }
 
-  public getAllMatchs(sortOrderRequest: string, textRequest: string): Observable<Music[]> {
+  public getAllMusics(sortOrderRequest: string, textRequest: string): Observable<Music[]> {
     return this.http.post<Music[]>(this.uri + '/GetAll', { sortOrder: sortOrderRequest, text: textRequest });
+  }
+
+  public insertMusic(music: Music) {
+    return this.http.post<Music>(this.uri, music);
+  }
+
+  public removeMusic(id: number) {
+    return this.http.delete(this.uri + '/' + id);
+  }
+
+  public getMusicById(id: number) {
+    return this.http.get<Music>(this.uri + '/' + id);
   }
 }

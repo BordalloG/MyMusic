@@ -1,27 +1,68 @@
 <div class="filter">
   <mat-form-field>
-    <input matInput  [(ngModel)]="filterText" (keyup)="applyTextFilter()" placeholder="Filtrar" #spy>
-</mat-form-field>
+    <input matInput id="filterInput" [(ngModel)]="filterText" (keyup)="applyTextFilter()" placeholder="Filtrar" #spy>
+  </mat-form-field>
 </div>
+
 <table mat-table [dataSource]="dataSource" matSort class="mat-elevation-z8">
 
-
+  <!-- Author -->
   <ng-container matColumnDef="Author">
-    <th mat-header-cell *matHeaderCellDef mat-sort-header> Author </th>
+    <th mat-header-cell *matHeaderCellDef>
+      <button mat-button (click)="applySortOrderFilter('Author')">
+        Autor <i *ngIf="sortOrder == 'Author'" class="material-icons sortOrderIcon">
+          keyboard_arrow_down
+        </i>
+      </button>
+    </th>
     <td mat-cell *matCellDef="let music"> {{music.author}} </td>
   </ng-container>
 
-
+  <!-- Title -->
   <ng-container matColumnDef="Title">
-    <th mat-header-cell *matHeaderCellDef mat-sort-header> Title </th>
+    <th mat-header-cell *matHeaderCellDef>
+      <button mat-button (click)="applySortOrderFilter('Title')">
+        Título <i *ngIf="sortOrder == 'Title'" class="material-icons sortOrderIcon">
+          keyboard_arrow_down
+        </i>
+      </button>
+    </th>
     <td mat-cell *matCellDef="let music"> {{music.title}} </td>
   </ng-container>
-  <!-- Weight Column -->
+
+  <!-- Duration -->
   <ng-container matColumnDef="Duration">
-    <th mat-header-cell *matHeaderCellDef mat-sort-header> Duration </th>
+    <th mat-header-cell *matHeaderCellDef>
+      <button mat-button (click)="applySortOrderFilter('Duration')">
+        Duração <i *ngIf="sortOrder == 'Duration'" class="material-icons sortOrderIcon">
+          keyboard_arrow_down
+        </i>
+      </button>
+    </th>
     <td mat-cell *matCellDef="let music"> {{music.duration}} </td>
   </ng-container>
 
+  <!-- Actions -->
+  <ng-container matColumnDef="Actions">
+    <th mat-header-cell *matHeaderCellDef>
+    </th>
+
+    <td mat-cell *matCellDef="let music">
+      <button mat-icon-button [matMenuTriggerFor]="menu">
+        <i class="material-icons">
+          settings
+        </i>
+        <mat-menu #menu="matMenu" >
+            <button mat-menu-item (click)="showDetails(music.id)">Visualizar</button>
+            <button mat-menu-item>Editar</button>
+            <button mat-menu-item (click)="deleteMusic(music.id)">Apagar</button>
+          </mat-menu>
+      </button>
+    </td>
+  </ng-container>
+
+
   <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
   <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+
 </table>

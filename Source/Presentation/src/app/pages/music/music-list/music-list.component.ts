@@ -1,8 +1,9 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
 
 import { MusicService } from '../music.service';
 import { Music } from 'src/app/models/music.model';
-import { MatTableDataSource, MatFormFieldControl } from '@angular/material';
+import { MatTableDataSource, MatFormFieldControl, MatDialog } from '@angular/material';
+import { MusicDetailDialogComponent } from '../music-detail-dialog/music-detail-dialog.component';
 
 
 @Component({
@@ -12,27 +13,50 @@ import { MatTableDataSource, MatFormFieldControl } from '@angular/material';
 })
 export class MusicListComponent implements OnInit {
 
-  constructor(private musicService: MusicService) { }
+  @Input() listMusic;
+  constructor(private musicService: MusicService, public dialog: MatDialog) { }
 
-  displayedColumns: string[] = ['Author', 'Title', 'Duration'];
+  displayedColumns: string[] = ['Author', 'Title', 'Duration', 'Actions'];
   dataSource = new MatTableDataSource();
   filterText = '';
   sortOrder = '';
+
   ngOnInit() {
-    this.getAllMusics(this.sortOrder,this.filterText);
+    this.getAllMusics(this.sortOrder, this.filterText);
+    this.listMusic
+      .asObservable()
+      .subscribe((x: boolean) => {
+        if (x) {
+          this.getAllMusics(this.sortOrder, this.filterText);
+        }
+        return;
+      });
   }
 
-  getAllMusics(sortOrder: string, text: string){
-    this.musicService.getAllMatchs(sortOrder, text)
-    .subscribe(
-      res => {
-        this.dataSource = new MatTableDataSource(res);
-        console.log(res);
-      },
-      err => {
-        console.log('Falhou!! ', err);
-      }
-    );
+  getAllMusics(sortOrder: string, text: string) {
+    console.log('sort order: ', sortOrder);
+    this.musicService.getAllMusics(sortOrder, text)
+      .subscribe(
+        res => {
+          this.dataSource = new MatTableDataSource(res);
+        },
+        err => {
+          console.log('Falhou!! ', err);
+        }
+      );
+  }
+
+  showDetails(idMusic: number) {
+    const dialogRef = this.dialog.open(MusicDetailDialogComponent,
+      {
+        data: {
+          id: idMusic
+        }
+      });
+
+    dialogRef.afterClosed().subscribe(result => {
+      console.log('The dialog was closed');
+    });
   }
 
   applyTextFilter() {
@@ -40,7 +64,18 @@ export class MusicListComponent implements OnInit {
   }
 
   applySortOrderFilter(sortOrder: string) {
+    sortOrder = sortOrder === this.sortOrder ? ' ' : sortOrder;
     this.sortOrder = sortOrder;
     this.getAllMusics(this.sortOrder, this.filterText);
+  }
+
+  deleteMusic(idMusic: number) {
+    this.musicService.removeMusic(idMusic)
+      .subscribe(
+        res => {
+          this.getAllMusics(this.sortOrder, this.filterText);
+        },
+        err => { console.log(err); }
+      );
   }
 }

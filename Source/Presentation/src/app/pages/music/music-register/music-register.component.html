@@ -1,3 +1,15 @@
-<p>
-  music-register works!
-</p>
+<div class="test">
+    <mat-form-field hintLabel="Até 100 caracteres">
+        <input [(ngModel)]="music.author" matInput #autor maxlength="100" placeholder="Autor">
+    </mat-form-field>
+
+    <mat-form-field hintLabel="Até 100 caracteres">
+        <input [(ngModel)]="music.title" matInput #input maxlength="100" placeholder="Título">
+    </mat-form-field>
+
+    <mat-form-field hintLabel="Utilize o padrão: 00:00">
+        <input [(ngModel)]="music.duration" matInput #input maxlength="100" placeholder="Duração" >
+    </mat-form-field>
+    <button mat-flat-button color="accent" (click)="saveMusic()">Salvar</button>
+</div>
+

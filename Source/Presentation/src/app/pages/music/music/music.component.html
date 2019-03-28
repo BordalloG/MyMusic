@@ -1,5 +1,3 @@
 
-
-<mm-music-list>
-
-</mm-music-list>
+<mm-music-register (musicAdded)="musicListUpdate($event)"></mm-music-register>
+<mm-music-list [listMusic]="listMusicSubject"></mm-music-list>
