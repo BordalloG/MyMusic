@@ -17,7 +17,7 @@ namespace MyMusic.Domain.Interfaces.Repository
        
         Task InsertAsync(TEntity entity);
        
-        Task UpdateAsync(TEntity entity);
+        Task UpdateAsync(TEntity entity, TEntity existent);
         
         Task SaveChangesAsync();
     }

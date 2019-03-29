@@ -18,6 +18,7 @@ namespace MyMusic.Infrastructure.IoC.Manager
             serviceCollection.AddScoped<IMusicApplicationService, MusicApplicationService>();
             //Domain
             serviceCollection.AddScoped<IMusicDomainService, MusicDomainService>();
+            serviceCollection.AddScoped<IHttpClientHelperDomainService, HttpClientHelperDomainService>();
             //Repository
             serviceCollection.AddScoped<IMusicRepository, MusicRepository>();
 

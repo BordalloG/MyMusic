@@ -6,20 +6,20 @@
     <members>
         <member name="M:MyMusic.Application.WebAPI.Controllers.MusicController.GetAll">
             <summary>
-            Retrieves a List of Matchs
+            Retrieves a List of Music
             </summary>
             <returns></returns>
         </member>
         <member name="M:MyMusic.Application.WebAPI.Controllers.MusicController.InsertMusicAsync(MyMusic.Application.InOut.Music.MusicRequest)">
             <summary>
-            Inserts a new Match
+            Inserts a new Music
             </summary>
             <param name="musicRequest"></param>
             <returns></returns>
         </member>
-        <member name="M:MyMusic.Application.WebAPI.Controllers.MusicController.DeleteMatchAsync(System.Int32)">
+        <member name="M:MyMusic.Application.WebAPI.Controllers.MusicController.DeleteMusicAsync(System.Int32)">
             <summary>
-            Remove a Match
+            Remove a Music
             </summary>
             <param name="musicId"></param>
             <returns></returns>

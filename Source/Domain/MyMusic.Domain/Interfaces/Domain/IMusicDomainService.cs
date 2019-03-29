@@ -10,5 +10,6 @@ namespace MyMusic.Domain.Interfaces.Domain
     public interface IMusicDomainService : IDomainServiceBase<Music>
     {
         Task<List<Music>> GetAllAsync(MusicFilter filter);
+        Task<List<Music>> InsertRangeAsync(List<Music> domainMusicList);
     }
 }

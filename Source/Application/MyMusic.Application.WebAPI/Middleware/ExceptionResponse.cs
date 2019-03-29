@@ -1,5 +1,6 @@
 ﻿namespace MyMusic.Application.WebAPI.Middleware
 {
+    using MyMusic.Domain.Exceptions;
     using Newtonsoft.Json;
     using System;
     using System.Net;
@@ -40,13 +41,20 @@
 
             private ExceptionResponse GetCompleteException(Exception exception)
             {
+
+                var statusCode = exception is NotFoundException ? HttpStatusCode.NotFound :
+                    exception is BadRequestException ? HttpStatusCode.BadRequest :
+                    exception is NoContentException ? HttpStatusCode.NoContent :
+                    HttpStatusCode.InternalServerError;
+
+
                 var response = new ExceptionResponse
                 {
                     Error = new ErrorObject
                     {
                         Message = exception.Message,
                         Target = exception.Source,
-                        Code = HttpStatusCode.InternalServerError
+                        Code = statusCode
                     },
                     InnerError = exception.InnerException != null
                         ? GetCompleteException(exception.InnerException)

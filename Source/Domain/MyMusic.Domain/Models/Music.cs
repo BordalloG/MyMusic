@@ -6,6 +6,7 @@ namespace MyMusic.Domain.Models
 {
     public class Music : Entity
     {
+        private long durationTicks;
         public Music(string author, string title, TimeSpan duration)
         {
             Author = author;
@@ -25,7 +26,16 @@ namespace MyMusic.Domain.Models
         public string Author { get; set; }
         public string Title { get; set; }
         public TimeSpan Duration { get; set; }
-        public long DurationTicks { get; set; }
+
+        public long DurationTicks {
+            get {
+                return durationTicks;
+            }
+            set {
+                durationTicks = value;
+                Duration = TimeSpan.FromTicks(value);
+            }
+        }
 
         public ValidationResult ValidationResult { get; private set; }
         public bool IsValid

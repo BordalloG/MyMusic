@@ -13,7 +13,7 @@ export class MusicRegisterComponent implements OnInit {
   @Output() musicAdded: EventEmitter<boolean> =  new EventEmitter(false);
 
   constructor(private musicService: MusicService, private snackBar: MatSnackBar) {
-    this.music = {id: 0, author: '', title: '' , duration: '00:00' };
+    this.music = {id: 0, author: '', title: '' , duration: '000000' };
    }
 
 
@@ -24,7 +24,9 @@ export class MusicRegisterComponent implements OnInit {
 
   saveMusic() {
     const musicRequest = this.music;
-    musicRequest.duration = '00:' + this.music.duration;
+    musicRequest.duration =
+    this.music.duration.substring(0, 2) + ':' + this.music.duration.substring(2, 4) + ':' + this.music.duration.substring(4, 6) ;
+
     this.musicService.insertMusic(musicRequest)
     .subscribe(
       res => {
@@ -34,7 +36,7 @@ export class MusicRegisterComponent implements OnInit {
         this.music = new Music();
         this.musicAdded.emit(true);
       },
-      err => {alert(err.error.error.message); }
+      err => { console.log(err); }
     );
   }
 }

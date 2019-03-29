@@ -46,9 +46,9 @@ namespace MyMusic.Infrastructure.Repository.Implementation
             await DbContext.SaveChangesAsync();
         }
 
-        public virtual Task UpdateAsync(TEntity entity)
+        public virtual async Task UpdateAsync(TEntity entity, TEntity existent)
         {
-            throw new NotImplementedException();
+          DbContext.Entry(existent).CurrentValues.SetValues(entity);
         }
     }
 }

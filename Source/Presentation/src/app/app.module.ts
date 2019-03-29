@@ -10,6 +10,11 @@ import { FormsModule } from '@angular/forms';
 import { MatTableModule, MatSortModule, MatFormFieldModule, MatInputModule } from '@angular/material';
 import {MatDialogModule} from '@angular/material/dialog';
 import {MatDividerModule} from '@angular/material/divider';
+import {MatSidenavModule} from '@angular/material/sidenav';
+import {MatListModule} from '@angular/material/list';
+import {MatToolbarModule} from '@angular/material/toolbar';
+import {MatCardModule} from '@angular/material/card';
+import {MatExpansionModule} from '@angular/material/expansion';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -18,6 +23,10 @@ import { MusicRegisterComponent } from './pages/music/music-register/music-regis
 import { MusicListComponent } from './pages/music/music-list/music-list.component';
 import { HomeComponent } from './pages/home/home/home.component';
 import { MusicDetailDialogComponent } from './pages/music/music-detail-dialog/music-detail-dialog.component';
+import { SidenavComponent } from './layout/sidenav/sidenav.component';
+import {NgxMaskModule} from 'ngx-mask';
+import { MusicEditDialogComponent } from './pages/music/music-edit-dialog/music-edit-dialog.component';
+import { SpotfyComponent } from './pages/spotfy/spotfy/spotfy.component';
 
 @NgModule({
   declarations: [
@@ -26,7 +35,10 @@ import { MusicDetailDialogComponent } from './pages/music/music-detail-dialog/mu
     MusicRegisterComponent,
     MusicListComponent,
     HomeComponent,
-    MusicDetailDialogComponent
+    MusicDetailDialogComponent,
+    SidenavComponent,
+    MusicEditDialogComponent,
+    SpotfyComponent
   ],
   imports: [
     BrowserModule,
@@ -44,10 +56,17 @@ import { MusicDetailDialogComponent } from './pages/music/music-detail-dialog/mu
     MatMenuModule,
     MatSnackBarModule,
     MatDialogModule,
-    MatDividerModule
+    MatDividerModule,
+    MatSidenavModule,
+    MatListModule,
+    MatToolbarModule,
+    NgxMaskModule.forRoot(),
+    MatCardModule,
+    MatExpansionModule
   ],
   entryComponents: [
-    MusicDetailDialogComponent
+    MusicDetailDialogComponent,
+    MusicEditDialogComponent
   ],
   providers: [
     HttpClientModule

@@ -10,5 +10,7 @@ namespace MyMusic.Application.Interfaces
     public interface IMusicApplicationService : IApplicationServiceBase<MusicRequest,MusicResponse>
     {
         Task<List<MusicResponse>> GetAllAsync(MusicFilterRequest filter);
+        Task<string> GetTracksFromSpotify(string url);
+        Task<List<MusicResponse>> InsertRangeAsync(List<MusicRequest> musicRequest);
     }
 }

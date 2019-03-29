@@ -28,4 +28,12 @@ export class MusicService {
   public getMusicById(id: number) {
     return this.http.get<Music>(this.uri + '/' + id);
   }
+
+  public updateMusicBy(id: number, music: Music) {
+    return this.http.put<Music>(this.uri + '/' + id, music);
+  }
+
+  public insertRange(musics: Music[]) {
+    return this.http.post<Music>(this.uri + '/PostRange', musics);
+  }
 }

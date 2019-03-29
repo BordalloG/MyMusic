@@ -1,3 +1,35 @@
+<mat-toolbar color="accent">
+    <mat-toolbar-row>
+        <span>MyMusic</span>
+    </mat-toolbar-row>
+</mat-toolbar>
+<mat-drawer-container class="example-container">
+    <mat-drawer mode="side" class="fixo" opened>
+            
+        <mat-nav-list>
+                <a mat-list-item (click)="redirect('Home')" >
+                        <i class="material-icons menuIcon"> home </i>
+                         Home
+                </a>
+        </mat-nav-list>
 
+        <mat-nav-list>
+                <a mat-list-item (click)="redirect('Music')" >
+                        <i class="material-icons menuIcon"> music_note </i>
+                         Lista de Músicas
+                </a>
+        </mat-nav-list>
 
-<router-outlet></router-outlet>
+        <mat-nav-list>
+                <a mat-list-item (click)="redirect('ImportFromSpotify')" >
+                        <i class="material-icons menuIcon"> import_export </i>
+                         Importar do Spotfy (em breve)
+                </a>
+        </mat-nav-list>
+
+    </mat-drawer>
+    <mat-drawer-content>
+        <router-outlet></router-outlet>
+    </mat-drawer-content>
+
+</mat-drawer-container>

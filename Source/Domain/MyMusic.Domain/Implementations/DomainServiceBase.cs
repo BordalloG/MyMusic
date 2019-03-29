@@ -1,8 +1,10 @@
-﻿using MyMusic.Domain.Interfaces.Domain;
+﻿using MyMusic.Domain.Exceptions;
+using MyMusic.Domain.Interfaces.Domain;
 using MyMusic.Domain.Interfaces.Repository;
 using MyMusic.Domain.Models;
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -24,12 +26,19 @@ namespace MyMusic.Domain.Implementations
 
         public virtual async Task<List<TEntity>> GetAllAsync()
         {
-            return await _entityRepository.GetAllAsync();
+            var response = await _entityRepository.GetAllAsync();
+            if (!response.Any())
+                throw new NoContentException("Nenhum valor encontrado");
+            return response;
+
         }
 
         public virtual async Task<TEntity> GetByIdAsync(int entityId)
         {
-            return await _entityRepository.GetByIdAsync(entityId);
+            var response = await _entityRepository.GetByIdAsync(entityId);
+            if (response == null)
+                throw new NotFoundException("Nada foi encontrado para esse Id");
+            return response;
         }
 
         public virtual async Task<TEntity> InsertAsync(TEntity entity)
@@ -42,7 +51,10 @@ namespace MyMusic.Domain.Implementations
         public virtual async Task<TEntity> UpdateAsync(TEntity entity, int entityId)
         {
             entity.Id = entityId;
-            await _entityRepository.UpdateAsync(entity);
+            var dbEntity = await this.GetByIdAsync(entityId);
+            
+
+            await _entityRepository.UpdateAsync(entity,dbEntity);
             await _entityRepository.SaveChangesAsync();
             return entity;
         }

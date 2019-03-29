@@ -1,0 +1,10 @@
+<mat-form-field>
+  <input matInput [(ngModel)]="playlistUrl" >
+</mat-form-field>
+<button mat-raised-button color="primary" (click)="import()">Importar</button>
+<button mat-raised-button color="primary" (click)="saveMusic()">Salvar</button>
+<div *ngFor="let music of musics">
+{{music.author}} -
+{{music.title}}  -
+{{music.duration}} <br>
+</div>

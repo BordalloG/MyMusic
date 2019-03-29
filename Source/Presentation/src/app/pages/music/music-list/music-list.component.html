@@ -1,11 +1,10 @@
 <div class="filter">
   <mat-form-field>
-    <input matInput id="filterInput" [(ngModel)]="filterText" (keyup)="applyTextFilter()" placeholder="Filtrar" #spy>
+    <input matInput id="filterInput" [(ngModel)]="filterText" (keyup)="applyTextFilter()" placeholder="Filtrar" >
   </mat-form-field>
 </div>
 
 <table mat-table [dataSource]="dataSource" matSort class="mat-elevation-z8">
-
   <!-- Author -->
   <ng-container matColumnDef="Author">
     <th mat-header-cell *matHeaderCellDef>
@@ -54,7 +53,7 @@
         </i>
         <mat-menu #menu="matMenu" >
             <button mat-menu-item (click)="showDetails(music.id)">Visualizar</button>
-            <button mat-menu-item>Editar</button>
+            <button mat-menu-item (click)="editMusic(music.id)">Editar</button>
             <button mat-menu-item (click)="deleteMusic(music.id)">Apagar</button>
           </mat-menu>
       </button>

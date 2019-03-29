@@ -7,8 +7,8 @@
         <input [(ngModel)]="music.title" matInput #input maxlength="100" placeholder="Título">
     </mat-form-field>
 
-    <mat-form-field hintLabel="Utilize o padrão: 00:00">
-        <input [(ngModel)]="music.duration" matInput #input maxlength="100" placeholder="Duração" >
+    <mat-form-field hintLabel="horas : minutos : segundos">
+        <input [(ngModel)]="music.duration" matInput #input maxlength="100" placeholder="Duração"  mask='00:00:00' >
     </mat-form-field>
     <button mat-flat-button color="accent" (click)="saveMusic()">Salvar</button>
 </div>

@@ -4,6 +4,7 @@ import { MusicService } from '../music.service';
 import { Music } from 'src/app/models/music.model';
 import { MatTableDataSource, MatFormFieldControl, MatDialog } from '@angular/material';
 import { MusicDetailDialogComponent } from '../music-detail-dialog/music-detail-dialog.component';
+import { MusicEditDialogComponent } from '../music-edit-dialog/music-edit-dialog.component';
 
 
 @Component({
@@ -41,8 +42,33 @@ export class MusicListComponent implements OnInit {
           this.dataSource = new MatTableDataSource(res);
         },
         err => {
-          console.log('Falhou!! ', err);
+          if (err.status === 404) {
+            this.dataSource = new MatTableDataSource();
+          }
+          console.log(err);
         }
+      );
+  }
+  editMusic(idMusic: number) {
+    const dialogRef = this.dialog.open(MusicEditDialogComponent,
+      {
+        data: {
+          id: idMusic
+        }
+      });
+
+    dialogRef.afterClosed().subscribe(result => {
+      console.log("fechei edição");
+      this.getAllMusics(this.sortOrder, this.filterText);
+    });
+  }
+  deleteMusic(idMusic: number) {
+    this.musicService.removeMusic(idMusic)
+      .subscribe(
+        res => {
+          this.getAllMusics(this.sortOrder, this.filterText);
+        },
+        err => { console.log(err); }
       );
   }
 
@@ -67,15 +93,5 @@ export class MusicListComponent implements OnInit {
     sortOrder = sortOrder === this.sortOrder ? ' ' : sortOrder;
     this.sortOrder = sortOrder;
     this.getAllMusics(this.sortOrder, this.filterText);
-  }
-
-  deleteMusic(idMusic: number) {
-    this.musicService.removeMusic(idMusic)
-      .subscribe(
-        res => {
-          this.getAllMusics(this.sortOrder, this.filterText);
-        },
-        err => { console.log(err); }
-      );
   }
 }

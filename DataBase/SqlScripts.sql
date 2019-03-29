@@ -1,4 +1,11 @@
-DROP DATABASE MyMusic
+IF (EXISTS (SELECT name 
+FROM master.dbo.sysdatabases 
+WHERE ('[' + name + ']' = 'MyMusic'
+OR name = 'MyMusic')))
+BEGIN
+	DROP DATABASE MyMusic
+END
+
 GO
 CREATE DATABASE MyMusic
 GO
