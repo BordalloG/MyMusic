@@ -1,5 +1,27 @@
-.card{
+.banner{
     display: inline-block;
-    margin: 1.5%;
-    width:30%;
+    margin: 5%;
+    width:80%;
+    text-align: center;
+}
+.banner > h1 {
+    font-size: 65px;
+}
+.banner > h3 {
+    font-size: 35px;
+}
+.background
+{
+    background-image: url("src/assets/imgs/background.jpg");
+    background-position: center;
+}
+.info{
+    align-items: center;
+}
+.card {
+    border-radius: 0;
+    margin: 2% 4%;
+}
+a{
+    color:#De4C3A;
 }

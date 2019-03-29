@@ -10,7 +10,7 @@ namespace MyMusic.Domain.Implementations
 {
     public class HttpClientHelperDomainService : IHttpClientHelperDomainService
     {
-        private readonly string spotifyToken = "BQACthOrEoIipUDkfaaDp9XAJfQjErMsWFnyx8TaFnq9pc5SCESba-JldE_8TF84Cdap2TcDcvWJVtJxtDl8nivWuG10d6DE9sGX6m6Wr3lQwy2a8y3D4B5vM7Du21JTA_EpUERc";
+        private readonly string spotifyToken = "BQA2JW6xHqM-MhW8YCHFzGcQKwgLKYOLBbzheYrSrdI5gt6NZ6C4b-0WzaQ8TTnoXhiIYovsmN9WSsN3jnBJpTW_c3pYuA3pa751WRZSo6ykScr4sMaDXhkA0vWO9LAXNT1_ggLM";
         public async Task<string> HttpGet(string url)
         {
             HttpClient client = new HttpClient();

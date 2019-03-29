@@ -1,26 +1,42 @@
 table {
   width: 100%;
 }
-
-th.mat-sort-header-sorted {
-  color: black;
+.squaredCard{
+  border-radius: 0px;
 }
 .filter {
   display: flex;
   flex-direction: column;
 }
-
 .filter > * {
   width: 100%;
-  background-color: #424242;
+  background-color: #222222;
+}
+
+.filter > input {
+  margin :40px !important;
 }
 .sortOrderButton
 {
   width: 14%;
   padding: 1%;
   border-radius: 2px;
-  background-color:  #373737 !important;
 }
+
 .sortOrderIcon{
   font-size: 2em;
+}
+.musicListComponent{
+ margin: 1% 2% ;
+}
+
+.musicList{
+  margin-top:2%;
+}
+
+.filter-input {
+width: 40%;
+}
+.filter-input > * {
+  color: red !important;
 }

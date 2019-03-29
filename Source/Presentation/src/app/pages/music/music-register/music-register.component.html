@@ -1,15 +1,16 @@
-<div class="test">
-    <mat-form-field hintLabel="Até 100 caracteres">
-        <input [(ngModel)]="music.author" matInput #autor maxlength="100" placeholder="Autor">
-    </mat-form-field>
+<div class="register">
+        <mat-form-field color="accent" hintLabel="Até 100 caracteres">
+            <input  [(ngModel)]="music.author" matInput #autor maxlength="100" placeholder="Autor">
+        </mat-form-field>
+    
+        <mat-form-field color="accent" hintLabel="Até 100 caracteres">
+            <input  [(ngModel)]="music.title" matInput #input maxlength="100" placeholder="Título">
+        </mat-form-field>
+    
+        <mat-form-field color="accent" hintLabel="horas : minutos : segundos">
+            <input  [(ngModel)]="music.duration" matInput #input maxlength="100" placeholder="Duração"  mask='00:00:00' >
+        </mat-form-field>
 
-    <mat-form-field hintLabel="Até 100 caracteres">
-        <input [(ngModel)]="music.title" matInput #input maxlength="100" placeholder="Título">
-    </mat-form-field>
-
-    <mat-form-field hintLabel="horas : minutos : segundos">
-        <input [(ngModel)]="music.duration" matInput #input maxlength="100" placeholder="Duração"  mask='00:00:00' >
-    </mat-form-field>
-    <button mat-flat-button color="accent" (click)="saveMusic()">Salvar</button>
+        <button mat-flat-button color="accent" class="inputButton" (click)="saveMusic()">Adicionar</button>
 </div>
 

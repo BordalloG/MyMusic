@@ -1,8 +1,13 @@
-<h1>
-  Detalhes :
-</h1>
-Id: {{music.id}}<br>
-Autora: {{music.author}}<br>
-Título: {{music.title}}<br>
-Duração: {{music.duration}}<br>
-<button mat-button (click)="close()">Fechar</button>
+<div class="detalhes">
+  <h3>
+    Detalhes da música :
+  </h3>
+  <mat-divider class="divider" ></mat-divider>
+
+  Id: {{music.id}}<br>
+  Autora: {{music.author}}<br>
+  Título: {{music.title}}<br>
+  Duração: {{music.duration}}<br>
+  <mat-divider class="divider" ></mat-divider>
+  <button mat-raised-button (click)="close()">Fechar</button>
+</div>

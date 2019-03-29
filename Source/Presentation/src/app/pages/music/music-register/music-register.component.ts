@@ -13,7 +13,7 @@ export class MusicRegisterComponent implements OnInit {
   @Output() musicAdded: EventEmitter<boolean> =  new EventEmitter(false);
 
   constructor(private musicService: MusicService, private snackBar: MatSnackBar) {
-    this.music = {id: 0, author: '', title: '' , duration: '000000' };
+    this.music = {id: 0, author: '', title: '' , duration: '' };
    }
 
 

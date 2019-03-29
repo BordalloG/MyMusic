@@ -1,10 +1,15 @@
-<mat-form-field>
-  <input matInput [(ngModel)]="playlistUrl" >
-</mat-form-field>
-<button mat-raised-button color="primary" (click)="import()">Importar</button>
-<button mat-raised-button color="primary" (click)="saveMusic()">Salvar</button>
-<div *ngFor="let music of musics">
-{{music.author}} -
-{{music.title}}  -
-{{music.duration}} <br>
+<div>
+  <mat-card class="card">
+    <mat-form-field color="accent" class="textField">
+      <input matInput  [(ngModel)]="playlistUrl" placeholder="Url da playlist">
+    </mat-form-field>
+
+    <button mat-raised-button color="accent" class="button" (click)="import()">Importar</button>
+    <button mat-raised-button color="accent" class="button" (click)="saveMusic()">Salvar</button>
+  </mat-card>
+  <div *ngFor="let music of musics">
+    {{music.author}} -
+    {{music.title}} -
+    {{music.duration}} <br>
+  </div>
 </div>
