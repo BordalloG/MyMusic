@@ -46,3 +46,6 @@ Altere a variável baseUri no arquivo  src\environments\environment.ts  com o va
 Use o comando "ng serve --open" para rodar o servidor.
 
 Observação: É necessário renovar o token do spotify de tempos em tempos.
+
+
+Exemplo de playlist: https://open.spotify.com/playlist/1Z0ZsrMYLRyFROD8JmzmXX
