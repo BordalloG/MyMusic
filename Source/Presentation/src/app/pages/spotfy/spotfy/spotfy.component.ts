@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { SpotfyService } from '../spotfy.service';
 import { Music } from 'src/app/models/music.model';
 import { MusicService } from '../../music/music.service';
+import { MatSnackBar } from '@angular/material';
 
 @Component({
   selector: 'mm-spotfy',
@@ -10,7 +11,7 @@ import { MusicService } from '../../music/music.service';
 })
 export class SpotfyComponent implements OnInit {
 
-  constructor(private spotfyService: SpotfyService, private musicService: MusicService) { }
+  constructor(private spotfyService: SpotfyService, private musicService: MusicService, private snackBar: MatSnackBar) { }
   public musics: Music[] = new Array<Music>();
 
   playlistUrl: string;
@@ -19,7 +20,7 @@ export class SpotfyComponent implements OnInit {
   }
 
   import() {
-    var idPLaylist = this.playlistUrl.split("playlist/")[1];
+    var idPLaylist = this.playlistUrl.split('playlist/')[1];
     this.spotfyService.getTracks(idPLaylist)
 
       .subscribe(
@@ -31,22 +32,24 @@ export class SpotfyComponent implements OnInit {
   fillMusic(res: any) {
     console.log(res);
     res.items.forEach(element => {
-      const durationMusic = new Date(1000*Math.round(element.track.duration_ms / 1000));
+      const durationMusic = new Date(1000 * Math.round(element.track.duration_ms / 1000));
       this.musics.push(
         {
           author: element.track.artists[0].name,
-          duration: durationMusic.getUTCHours() + ':' + durationMusic.getUTCMinutes() + ':' + durationMusic.getUTCSeconds() ,
+          duration: durationMusic.getUTCHours() + ':' + durationMusic.getUTCMinutes() + ':' + durationMusic.getUTCSeconds(),
           title: element.track.name,
           id: 0
         });
     });
   }
 
-  saveMusic(){
+  saveMusic() {
     this.musicService.insertRange(this.musics)
-    .subscribe(
-      res => { console.log (res); },
-      err => { console.log (err); }
-    )
+      .subscribe(
+        res => {
+          this.snackBar.open('Musicas inseridas com sucesso', 'Fechar', { duration: 3000 }),
+            err => { console.log(err); }
+        }
+      )
   }
 }

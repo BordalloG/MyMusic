@@ -8,7 +8,7 @@ import { Observable } from 'rxjs';
 export class SpotfyService {
 
   uriStart = 'https://api.spotify.com/v1/playlists/';
-  uriEnd = '/tracks?market=BR&fields=items(track(name%2Cduration_ms%2Cartists))&limit=10&offset=0';
+  uriEnd = '/tracks?market=BR&fields=items(track(name%2Cduration_ms%2Cartists))&limit=100&offset=0';
   constructor(private http: HttpClient) { }
 
   getTracks(idPLaylist: string): Observable<string> {
