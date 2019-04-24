@@ -22,4 +22,4 @@ steps:
     
 - task: VSTest@2
   inputs:
-  testSelector: 'testRun'
+    testSelector: 'testRun'
