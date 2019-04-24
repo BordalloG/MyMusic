@@ -19,7 +19,5 @@ steps:
 - task: DotNetCoreCLI@2
   inputs:
     command: 'build'
-    
-- task: VSTest@2
-  inputs:
-    testSelector: 'testRun'
+
+- script: dotnet teste 
