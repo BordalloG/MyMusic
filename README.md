@@ -23,11 +23,11 @@ Abra a solução usando o Visual Studio (MyMusic.sln).
 Defina o projeto da api (MyMusic.Application.WebAPI) como projeto inicialização.  
 Defina a url de inicio como "swagger":  
 ```bash
-Borão direito no projeto da api > Propriedades > Debug > Lauch browser: "swagger".
+Botão direito no projeto da api > Propriedades > Debug > Lauch browser: "swagger".
 ```
 Defina a porta de sua preferencia que sera usada para a API:
 ```bash
-Borão direito no projeto da api > Propriedades > Debug > App Url: "http://localhost:11223".
+Botão direito no projeto da api > Propriedades > Debug > App Url: "http://localhost:11223".
 ```
 Pegue um token de autenticação da api do spotify e adicione na api:
 ```bash
